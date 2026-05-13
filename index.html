@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Prity 🎂</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffb6c1,#ffd6e0);
+overflow-x:hidden;
+text-align:center;
+color:white;
+}
+
+/* Floating Animation */
+
+.floating{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
+}
+
+.item{
+position:absolute;
+font-size:30px;
+animation:rise 7s linear forwards;
+opacity:0.9;
+}
+
+@keyframes rise{
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
+}
+100%{
+transform:translateY(-10vh) rotate(360deg);
+opacity:1;
+}
+}
+
+/* Main */
+
+.container{
+position:relative;
+z-index:2;
+padding:40px 20px;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* Heading */
+
+h1{
+font-size:65px;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,0.5);
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:0 0 30px white;
+}
+}
+
+/* Button */
+
+button{
+padding:18px 40px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4d6d;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+margin-top:30px;
+transition:0.4s;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.hidden{
+display:none;
+}
+
+/* Make A Wish Title */
+
+.wish-title{
+margin-bottom:140px;
+z-index:10;
+position:relative;
+}
+
+/* Cake */
+
+.cake-wrapper{
+position:relative;
+}
+
+.cake{
+position:relative;
+width:360px;
+height:240px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* Candles */
+
+.candles{
+position:absolute;
+top:-95px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:35px;
+z-index:5;
+}
+
+.candle{
+width:16px;
+height:85px;
+background:linear-gradient(to bottom,#fff,#ffd6e0);
+border-radius:10px;
+position:relative;
+box-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Real Flame */
+
+.flame{
+width:22px;
+height:38px;
+background:radial-gradient(circle,#fff176,#ff9800,#ff5722);
+border-radius:50% 50% 45% 45%;
+position:absolute;
+top:-35px;
+left:-3px;
+box-shadow:
+0 0 15px #ff9800,
+0 0 35px yellow,
+0 0 60px orange;
+transform-origin:center bottom;
+animation:flicker 0.12s infinite alternate;
+filter:blur(0.3px);
+}
+
+@keyframes flicker{
+0%{
+transform:rotate(-4deg) scaleY(1);
+}
+25%{
+transform:rotate(3deg) scaleY(1.08);
+}
+50%{
+transform:rotate(-2deg) scaleY(0.95);
+}
+75%{
+transform:rotate(4deg) scaleY(1.1);
+}
+100%{
+transform:rotate(-3deg) scaleY(1);
+}
+}
+
+/* Cake Halves */
+
+.cake-half{
+position:absolute;
+width:180px;
+height:240px;
+background:linear-gradient(to bottom,#ff4d6d,#ff758f,#ffb3c6);
+overflow:hidden;
+top:0;
+transition:1.5s ease;
+box-shadow:
+0 15px 35px rgba(0,0,0,0.25),
+inset 0 5px 15px rgba(255,255,255,0.3);
+}
+
+.left-half{
+left:0;
+border-radius:25px 0 0 25px;
+}
+
+.right-half{
+right:0;
+border-radius:0 25px 25px 0;
+}
+
+/* Cake Cutting */
+
+.cut .left-half{
+transform:
+translateX(-40px)
+rotate(-8deg);
+}
+
+.cut .right-half{
+transform:
+translateX(40px)
+rotate(8deg);
+}
+
+/* Icing */
+
+.icing{
+width:100%;
+height:70px;
+background:white;
+position:absolute;
+top:0;
+border-radius:25px 25px 50% 50%;
+}
+
+/* Drips */
+
+.drips{
+position:absolute;
+background:white;
+border-radius:0 0 20px 20px;
+}
+
+.drip1{
+width:35px;
+height:70px;
+left:40px;
+top:45px;
+}
+
+.drip2{
+width:25px;
+height:55px;
+left:120px;
+top:45px;
+}
+
+.drip3{
+width:40px;
+height:75px;
+right:70px;
+top:45px;
+}
+
+.drip4{
+width:28px;
+height:60px;
+right:140px;
+top:45px;
+}
+
+/* Cake Text */
+
+.cake-text{
+position:absolute;
+top:110px;
+width:100%;
+font-size:34px;
+font-weight:bold;
+color:white;
+text-shadow:0 0 10px rgba(255,255,255,0.7);
+z-index:3;
+transition:1s;
+}
+
+.cut .cake-text{
+opacity:0;
+transform:scale(0.8);
+}
+
+/* White Flash */
+
+.flash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+z-index:999;
+animation:flashAnim 15s forwards;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.flash-text{
+position:absolute;
+font-size:70px;
+font-weight:bold;
+color:#ff4d6d;
+opacity:0.15;
+animation:zoom 15s ease;
+text-align:center;
+padding:20px;
+}
+
+@keyframes flashAnim{
+0%{
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+
+@keyframes zoom{
+0%{
+transform:scale(0.5);
+opacity:0;
+}
+100%{
+transform:scale(1.8);
+opacity:0.2;
+}
+}
+
+/* Single Photos */
+
+.single-photo-container{
+margin-top:40px;
+height:500px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.single-photo{
+width:340px;
+height:450px;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,255,255,0.6);
+animation:photoShow 1.5s;
+}
+
+@keyframes photoShow{
+from{
+opacity:0;
+transform:scale(0.6) rotate(-15deg);
+}
+to{
+opacity:1;
+transform:scale(1) rotate(0deg);
+}
+}
+
+/* Collage */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+width:100%;
+max-width:1100px;
+margin-top:50px;
+}
+
+.gallery img{
+width:100%;
+height:380px;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,255,255,0.4);
+transition:0.5s;
+animation:float 5s ease-in-out infinite;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.gallery img:nth-child(2){
+animation-delay:1s;
+}
+
+.gallery img:nth-child(3){
+animation-delay:2s;
+}
+
+.gallery img:nth-child(4){
+animation-delay:3s;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* Poem */
+
+.note{
+margin-top:50px;
+background:rgba(255,255,255,0.2);
+padding:40px;
+border-radius:30px;
+backdrop-filter:blur(10px);
+max-width:950px;
+line-height:2.2;
+font-size:28px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Fade */
+
+.fade-in{
+animation:fadeIn 2.5s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating"></div>
+
+<div class="container">
+
+<!-- Start -->
+
+<div id="startSection">
+
+<h1>Happy Birthday Prity 🎉</h1>
+
+<button onclick="showCake()">
+Open Your Surprise 🎁
+</button>
+
+</div>
+
+<!-- Cake Section -->
+
+<div id="cakeSection" class="hidden">
+
+<h1 class="wish-title">Make A Wish 🌸</h1>
+
+<div class="cake-wrapper">
+
+<div class="cake" id="cake">
+
+<!-- Candles -->
+
+<div class="candles">
+
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+
+</div>
+
+<!-- Left Cake -->
+
+<div class="cake-half left-half">
+
+<div class="icing"></div>
+
+<div class="drips drip1"></div>
+<div class="drips drip2"></div>
+
+</div>
+
+<!-- Right Cake -->
+
+<div class="cake-half right-half">
+
+<div class="icing"></div>
+
+<div class="drips drip3"></div>
+<div class="drips drip4"></div>
+
+</div>
+
+<!-- Cake Text -->
+
+<div class="cake-text">
+Happy Birthday
+</div>
+
+</div>
+
+</div>
+
+<button onclick="blowCandle()">
+Blow Candle 🕯️
+</button>
+
+</div>
+
+<!-- Final Section -->
+
+<div id="finalSection" class="hidden">
+
+<h1>Happy Birthday Little Sister 🌸</h1>
+
+<div class="single-photo-container">
+
+<img src="photo1.png" class="single-photo hidden" id="p1">
+<img src="photo2.png" class="single-photo hidden" id="p2">
+<img src="photo3.png" class="single-photo hidden" id="p3">
+<img src="photo4.png" class="single-photo hidden" id="p4">
+
+</div>
+
+<div class="gallery hidden fade-in" id="collage">
+
+<img src="photo1.png">
+<img src="photo2.png">
+<img src="photo3.png">
+<img src="photo4.png">
+
+</div>
+
+<div class="note hidden fade-in" id="poem">
+
+<p>
+Parade practice se shuru hui thi baat,<br>
+Aaj bhi yaad hai wo pehli mulaqat ✨
+</p>
+
+<br>
+
+<p>
+Kabhi hasi mazak, kabhi random si fight,<br>
+Par har situation me tera support feels right 🌸
+</p>
+
+<br>
+
+<p>
+Sabka to pata nahi, par meri tension tu kam kar deti hai 😂<br>
+Isi liye tu normal nahi, ek special little sister lagti hai 💐
+</p>
+
+<br>
+
+<p>
+Hamesha khush rehna aur aise hi smile karte rehna 🎂🎉
+</p>
+
+<br>
+
+<h2>— Your Brother Ishaan 🎉</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Music -->
+
+<audio id="music" loop preload="auto">
+<source src="Suzume.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Open Cake */
+
+function showCake(){
+
+document.getElementById("startSection")
+.classList.add("hidden");
+
+document.getElementById("cakeSection")
+.classList.remove("hidden");
+
+const music =
+document.getElementById("music");
+
+music.volume = 0.7;
+
+music.play();
+
+}
+
+/* Blow Candle */
+
+function blowCandle(){
+
+/* Remove Flames */
+
+document.querySelectorAll(".flame")
+.forEach(flame=>{
+flame.style.display="none";
+});
+
+/* Cake Cut */
+
+document.getElementById("cake")
+.classList.add("cut");
+
+/* White Flash */
+
+setTimeout(()=>{
+
+const flash=document.createElement("div");
+
+flash.classList.add("flash");
+
+flash.innerHTML=
+'<div class="flash-text">✨ HAPPIEST BIRTHDAY CHHOTA DON ✨</div>';
+
+document.body.appendChild(flash);
+
+},1800);
+
+/* Open Final */
+
+setTimeout(()=>{
+
+document.getElementById("cakeSection")
+.classList.add("hidden");
+
+document.getElementById("finalSection")
+.classList.remove("hidden");
+
+showPhotos();
+
+},15000);
+
+}
+
+/* Show Photos */
+
+function showPhotos(){
+
+const photos=["p1","p2","p3","p4"];
+
+let index=0;
+
+function nextPhoto(){
+
+if(index>0){
+
+document.getElementById(photos[index-1])
+.classList.add("hidden");
+
+}
+
+if(index<photos.length){
+
+document.getElementById(photos[index])
+.classList.remove("hidden");
+
+index++;
+
+setTimeout(nextPhoto,2200);
+
+}
+
+else{
+
+document.querySelector(".single-photo-container")
+.style.display="none";
+
+const collage =
+document.getElementById("collage");
+
+collage.classList.remove("hidden");
+
+setTimeout(()=>{
+
+const poem =
+document.getElementById("poem");
+
+poem.classList.remove("hidden");
+
+createFloating();
+
+},3500);
+
+}
+
+}
+
+nextPhoto();
+
+}
+
+/* Floating Animation */
+
+function createFloating(){
+
+setInterval(()=>{
+
+const item=document.createElement("div");
+
+item.classList.add("item");
+
+const emojis=["✨","🌸","🎉","⭐","💐"];
+
+item.innerHTML=
+emojis[Math.floor(Math.random()*emojis.length)];
+
+item.style.left=Math.random()*100+"vw";
+
+item.style.fontSize=
+Math.random()*30+20+"px";
+
+document.querySelector(".floating")
+.appendChild(item);
+
+setTimeout(()=>{
+item.remove();
+},7000);
+
+},300);
+
+}
+
+</script>
+
+</body>
+</html>
